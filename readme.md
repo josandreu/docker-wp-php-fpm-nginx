@@ -25,7 +25,7 @@ __*Nota__: En la plantilla se utiliza el dominio `local.wp-nginx.com` como ejemp
 
 ### Puesta en marcha
 
-1. ```git clone git@bitbucket.org:flat101team/docker-compose-wordpress-php-fpm-nginx.git```
+1. ```git clone git@github.com:josandreu/docker-wp-php-fpm-nginx.git```
 2. ```cd docker/config/nginx-conf/ssl```
 3. `mkcert -install nombre-dominio-proyecto`
 4. Modificamos el archivo `nginx.conf`, indicando el nombre correcto de SSLCertificateFile y SSLCertificateKeyFile, que corresponderán a los nombres de los certificados que hayamos creado previamente con mkcert. Como ejemplo está `local.wp-nginx.com`
