@@ -1,0 +1,15 @@
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/languages/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+.env
+wp-config.php
+*.log
+phpcs.xml
+pre-commit
+Jenkinsfile

@@ -1,0 +1,84 @@
+### WordPress template
+# ignore log files and databases
+*.log
+*.css.map
+.htaccess
+sitemap.xml
+sitemap.xml.gz
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/languages/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
+node_modules/
+
+
+# ignore all files that start with ~
+~*
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+nbproject/
+# JetBrains IDE
+.idea/
+# VS Code IDE
+.vscode/
+
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Docker
+!docker/
+!docker/config/.htaccess
+docker/config/ssl/*
+db-data/
+
+# Ignore vendor plugins, no ignore custom ones
+wp-content/plugins/
+
+### macOS template
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Applications
+*.app
+*.war
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
