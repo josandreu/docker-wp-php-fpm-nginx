@@ -1,4 +1,4 @@
-## Docker con WP + PHP + Apache + WP-CLI + Mysql + PMA + SSL
+## Docker con WP + PHP-FPM + Nginx + WP-CLI + MariaDB + PMA + SSL
 
 
 ### Instalación / configuración
