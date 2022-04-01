@@ -41,6 +41,9 @@ services:
       - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
       # For debugging only:
       - WORDPRESS_DEBUG=1
+      - WORDPRESS_CONFIG_EXTRA=
+          define( 'WP_REDIS_HOST', 'redis' );
+          define( 'WP_REDIS_PORT', 6379 );
     volumes:
       - ${WORDPRESS_LOCAL_HOME}:/var/www/html
       - ${DOCKER_PATH}/config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
@@ -97,6 +100,24 @@ services:
       UPLOAD_LIMIT: 300M
     ports:
       - "${IP}:8181:80"
+    networks:
+      - wordpress
+
+  redis:
+    image: redis:latest
+    restart: always
+    expose:
+      - 6379
+    command:
+      - redis-server
+      - --save 60 1
+      - --loglevel warning
+      - --maxmemory 128mb
+      - --maxmemory-policy allkeys-lru
+    volumes:
+      - ${DOCKER_PATH}/redis:/var/lib/redis
+      - ${DOCKER_PATH}/redis:/data
+      #- ./redis.conf:/usr/local/etc/redis/redis.conf
     networks:
       - wordpress
 

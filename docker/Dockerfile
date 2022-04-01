@@ -9,6 +9,8 @@ FROM wordpress:5.9.2-php7.4-fpm-alpine
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
     && apk del -f .build-deps
 
 # Copy xdebug.ini to /usr/local/etc/php/conf.d/
