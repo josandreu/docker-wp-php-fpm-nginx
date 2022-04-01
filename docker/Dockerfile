@@ -11,7 +11,8 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && docker-php-ext-enable xdebug \
     && pecl install redis \
     && docker-php-ext-enable redis \
-    && apk del -f .build-deps
+    && apk del -f .build-deps \
+    && rm -rf /tmp/pear
 
 # Copy xdebug.ini to /usr/local/etc/php/conf.d/
 COPY ./config/xdebug.ini /usr/local/etc/php/conf.d/
