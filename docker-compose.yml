@@ -3,7 +3,7 @@ version: '3.9'
 services:
   db:
     image: mariadb:10.7 # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
-    container_name: wp-database
+    container_name: ${PROJECT_NAME}-database
     restart: unless-stopped
     env_file: .env
     environment:
@@ -29,7 +29,7 @@ services:
     # default port 9000 (FastCGI)
     depends_on:
       - db
-    container_name: wp-wordpress
+    container_name: ${PROJECT_NAME}-wordpress
     build:
       context: ${DOCKER_PATH}
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
 
   wpcli:
     image: wordpress:cli
-    container_name: wpcli
+    container_name: ${PROJECT_NAME}-wpcli
     volumes:
       - ${DOCKER_PATH}/config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ${WORDPRESS_LOCAL_HOME}:/var/www/html
@@ -75,7 +75,7 @@ services:
     depends_on:
       - wordpress
     image: nginx:1
-    container_name: wp-nginx
+    container_name: ${PROJECT_NAME}-nginx
     env_file: .env
     restart: unless-stopped
     ports:
@@ -91,7 +91,7 @@ services:
 
   pma:
     image: phpmyadmin:latest
-    container_name: wp-phpmyadmin
+    container_name: ${PROJECT_NAME}-phpmyadmin
     environment:
       # https://docs.phpmyadmin.net/en/latest/setup.html#docker-environment-variables
       PMA_HOST: db
@@ -105,7 +105,8 @@ services:
 
   redis:
     image: redis:latest
-    restart: always
+    container_name: ${PROJECT_NAME}-redis
+    restart: unless-stopped
     expose:
       - 6379
     command:
@@ -128,5 +129,5 @@ volumes:
 
 networks:
   wordpress:
-    name: wp-wordpress
+    name: ${PROJECT_NAME}-wordpress
     driver: bridge
