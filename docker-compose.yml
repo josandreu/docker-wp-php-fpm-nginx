@@ -124,6 +124,7 @@ services:
 volumes:
   wordpress:
   dbdata:
+  redis:
 
 networks:
   wordpress:
