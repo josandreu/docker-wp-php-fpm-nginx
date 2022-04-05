@@ -26,13 +26,17 @@ __*Nota__: En la plantilla se utiliza el dominio `local.wp-nginx.com` como ejemp
 ### Puesta en marcha
 
 1. ```git clone git@github.com:josandreu/docker-wp-php-fpm-nginx.git```
-2. ```cd docker/config/nginx-conf/ssl```
-3. `mkcert -install nombre-dominio-proyecto`
-4. Modificamos el archivo `nginx.conf`, indicando el nombre correcto de SSLCertificateFile y SSLCertificateKeyFile, que corresponderán a los nombres de los certificados que hayamos creado previamente con mkcert. Como ejemplo está `local.wp-nginx.com`
-5. Cambiar `server_name` en el archivo `nginx.conf` para que coincida con nuestro nombre de dominio, como ejemplo está `local.wp-nginx.com`
-6. `cd ../../../..`
-7. `docker-compose up -d`
-8. Esperaremos unos instantes a que se copien los archivos de WordPress para que el servidor pueda responder.
+2. Modificamos las variables de entorno del archivo `.env`, especialmente `PROJECT_NAME`
+3. ```cd docker/config/nginx-conf/ssl```
+4. `mkcert -install nombre-dominio-proyecto`
+5. Modificamos el archivo `nginx.conf`, indicando el nombre correcto de SSLCertificateFile y SSLCertificateKeyFile, que corresponderán a los nombres de los certificados que hayamos creado previamente con mkcert. Como ejemplo está `local.wp-nginx.com`
+6. Cambiar `server_name` en el archivo `nginx.conf` para que coincida con nuestro nombre de dominio, como ejemplo está `local.wp-nginx.com`
+7. `cd ../../../..`
+8. `docker-compose up -d`
+9. Esperaremos unos instantes a que se copien los archivos de WordPress para que el servidor pueda responder.
+10. Realizamos la configuración inicial de WordPress 
+11. Si queremos tener Redis activado, instalamos el plugin para Redis con wp-cli: `docker-compose run --rm wpcli plugin install redis-cache`
+12. Activamos el plugin de Redis y comprobamos la conexión
 
 
 ### WP-CLI
