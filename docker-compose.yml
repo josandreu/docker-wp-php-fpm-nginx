@@ -85,7 +85,7 @@ services:
       - ${WORDPRESS_LOCAL_HOME}:/var/www/html
       - ${DOCKER_PATH}/config/nginx-conf/conf:/etc/nginx/conf.d/:ro
       - ${DOCKER_PATH}/config/nginx-conf/ssl:/etc/ssl/:ro
-      - ${NGINX_LOGS}:/var/log/nginx
+      - ${NGINX_LOGS_PATH}:/var/log/nginx
     networks:
       - wordpress
 
@@ -121,11 +121,6 @@ services:
       #- ./redis.conf:/usr/local/etc/redis/redis.conf
     networks:
       - wordpress
-
-volumes:
-  wordpress:
-  dbdata:
-  redis:
 
 networks:
   wordpress:
